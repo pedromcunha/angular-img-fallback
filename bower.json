@@ -6,16 +6,23 @@
   "keywords": [
     "angularjs",
     "images",
-    "error handling"
+    "error",
+    "handling"
   ],
   "authors": [
-    "Daniel Cohen <dcohenb@gmail.com>"
+    "Daniel Cohen and Pedro Cunha"
   ],
   "license": "MIT",
   "homepage": "https://github.com/dcohenb/angular-img-fallback",
   "ignore": [
     "angular.dcb-img-fallback.js",
     "example.html",
-    "README.md"
-  ]
+    "README.md",
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "moduleType": []
 }
