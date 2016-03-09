@@ -28,14 +28,19 @@ angular.module('dcbImgFallback', [])
         // Load the image source in the background and replace the element source once it's ready
         var linkFunction = function (scope, element, attr) {
             element[0].src = attr.loadingSrc || loadingDefault;
-            var img = new Image();
-            img.src = $interpolate(attr.imgSrc)(scope);
-            img.onload = function () {
-                img.onload = null;
-                if (element[0].src !== img.src) {
-                    element[0].src = img.src;
-                }
-            };
+            if(element[0].src.indexOf('https') !== -1 || element[0].src.indexOf('http') !== -1) {
+              var img = new Image();
+              img.src = $interpolate(attr.imgSrc)(scope);
+              img.onload = function () {
+                  img.onload = null;
+                  if (element[0].src !== img.src) {
+                      element[0].src = img.src;
+                  }
+              };
+            } else {
+              throw new Error('Not a full url, beginning in either http or https');
+              return false;
+            }
         };
 
         return {
