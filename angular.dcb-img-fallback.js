@@ -10,9 +10,9 @@ angular.module('dcbImgFallback', [])
         return {
             restrict: 'A',
             link: function (scope, element, attr) {
+                element[0].style.visibility = 'hidden';
                 // Listen for errors on the element and if there are any replace the source with the fallback source
                 var errorHanlder = function () {
-                    element[0].style.visibility = 'hidden';
                     element.off('error', errorHanlder);
                     var newSrc = attr.fallbackSrc || missingDefault;
                     if (element[0].src !== newSrc) {
